@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>会員情報修正</title>
+<link href="style.css" rel="stylesheet" media="all">
+<link href="https://fonts.googleapis.com/css?family=Limelight" rel="stylesheet">
+<link th:href="@{/css/confirmstyle2.css}" rel="stylesheet" />
+</head>
+
+<body>
+<header>
+  <h1>会員情報修正</h1>
+
+</header>
+
+<main id="contents">
+<form id="entryForm" th:action="@{/}" method="post">
+
+
+  <table class="entryTable" border="1">
+    <caption>会員情報</caption>
+
+    <tr>
+      <th>苗字:<br>[[${user.firstname}]] </th>
+      <td><a href="/firstname">変更</a></td>
+    </tr>
+
+    <tr>
+      <th>名前:<br> [[${user.lastname}]] </th>
+       <td><a href="/lastname">変更</a></td>
+    </tr>
+
+     <tr>
+      <th>学年:<br>
+       <th:block th:if="${user.grade==0}">
+高校1年
+</th:block>
+
+      <th:block th:if="${user.grade==1}">
+高校2年
+</th:block>
+
+ <th:block th:if="${user.grade==2}">
+高校3年
+</th:block>
+       </th>
+      <td><a href="/grade">変更</a></td>
+    </tr>
+
+
+<tr>
+      <th>志望校のレベル:<br>
+       <th:block th:if="${user.target==0}">
+日東駒専
+</th:block>
+
+      <th:block th:if="${user.target==1}">
+MARCH
+</th:block>
+
+ <th:block th:if="${user.target==2}">
+早慶
+</th:block> </th>
+      <td><a href="/target">変更</a></td>
+    </tr>
+
+<tr>
+      <th>模試の偏差値:<br>[[${user.hensachi}]] </th>
+      <td><a href="/hensachi">変更</a></td>
+    </tr>
+
+    <tr>
+      <th>郵便番号（ハイフンなし）:<br>[[${user.postnumber}]] </th>
+      <td><a href="/postnumber">変更</a></td>
+    </tr>
+    <tr>
+
+ <tr>
+      <th>住所:<br>[[${user.address}]] </th>
+      <td><a href="/address">変更</a></td>
+    <tr>
+
+      <th>性別:<br>
+       <th:block th:if="${user.sex==0}">
+男子
+</th:block>
+ <th:block th:if="${user.sex==1}">
+女子
+</th:block>
+</th>
+     <td><a href="/sex">変更</a></td>
+    </tr>
+
+ <tr>
+      <th>メールアドレス:<br>[[${user.email}]]</th>
+    <td><a href="/email">変更</a></td>
+    </tr>
+<tr>
+      <th>パスワード :<br>[[${user.password}]]</th>
+     <td><a href="/password">変更</a></td>
+    </tr>
+
+  </table>
+
+</form>
+
+</main>
+<a href="/home">ホームに戻る</a></body>
+
+</body>
+</html>

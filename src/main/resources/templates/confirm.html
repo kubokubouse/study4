@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>登録確認</title>
+<link th:href="@{/css/confirmstyle.css}" rel="stylesheet" />
+</head>
+<body>
+<table class="entryTable" border="1">
+   <caption>会員情報</caption>
+
+<tr>
+      <th>苗字 </th>
+   <td>[[${user.lastname}]] </td>
+    </tr>
+<tr>
+      <th>名前 </th>
+      <td>[[${user.firstname}]] </td>
+    </tr>
+
+    <tr>
+      <th>学年 </th>
+      <td>
+   <th:block th:if="${user.grade==0}">
+高校1年生
+</th:block>
+ <th:block th:if="${user.grade==1}">
+高校2年生
+</th:block>
+<th:block th:if="${user.grade==2}">
+高校3年生
+</th:block>
+
+      </td>
+    </tr>
+<tr>
+      <th>志望校のレベル </th>
+      <td><th:block th:if="${user.target==0}">
+日東駒専
+</th:block>
+ <th:block th:if="${user.target==1}">
+MARCH
+</th:block>
+<th:block th:if="${user.target==2}">
+早慶
+</th:block>
+
+      </td>
+    </tr>
+
+<tr>
+      <th>模試の偏差値 </th>
+      <td>[[${user.hensachi}]]</td>
+    </tr>
+
+<tr>
+      <th>郵便番号 </th>
+      <td>[[${user.postnumber}]]</td>
+    </tr>
+<tr>
+      <th>住所 </th>
+      <td>[[${user.address}]]</td>
+    </tr>
+
+<tr>
+      <th>性別 </th>
+      <td><th:block th:if="${user.sex==0}">
+男子
+</th:block>
+ <th:block th:if="${user.sex==1}">
+女子
+</th:block>
+</td>
+    </tr>
+
+
+<tr>
+      <th>メールアドレス </th>
+      <td>[[${user.email}]]</td>
+    </tr>
+
+<tr>
+      <th>パスワード </th>
+      <td>[[${user.password}]]</td>
+    </tr>
+</table>
+<a href="#" id="back-link">戻る</a>
+</body>
+
+<form  th:action="@{/regist}" th:object="${user}"method="post" >
+<label for="lastname"></label>
+<input type="hidden" th:field="*{lastname}">
+<input type="hidden" th:field="*{firstname}">
+<input type="hidden" th:field="*{grade}">
+<input type="hidden" th:field="*{target}">
+<input type="hidden" th:field="*{hensachi}">
+<input type="hidden" th:field="*{postnumber}">
+<input type="hidden" th:field="*{address}">
+<input type="hidden" th:field="*{sex}">
+<input type="hidden" th:field="*{email}">
+<input type="hidden" th:field="*{password}">
+<input type="submit" value="登録">
+</form>
+
+
+<script>
+  const backLink = document.getElementById('back-link');
+  backLink.addEventListener('click', () => {
+    history.back(-1);
+  });
+</script>
+
+</html>

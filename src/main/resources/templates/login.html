@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ログイン</title>
+
+<link rel="stylesheet" th:href="@{/css/loginstyle.css}" />
+
+</head>
+<body>
+<header>
+<h1>ログイン</h1>
+</header>
+<main id=contents>
+<form id="entryform" th:action="@{/login}"  th:object="${login}"method="post" >
+
+<table class="entryTable" border="1">
+<caption>ログイン情報</caption>
+ <tr>
+        <th>メールアドレス </th>
+      <td><label for="email"></label>
+
+      <input type="text" class="login-control"
+    th:errorclass="is-invalid" th:field="*{email}">
+ <div class="invalid-feedback" th:errors="*{email}">
+            </div>
+
+        <small>※半角で入力してください</small>
+      </td>
+    </tr>
+
+<tr>
+      <th>パスワード </th>
+      <td>
+         <label for="password"></label>
+      <input type="text" class="login-control"
+      th:errorclass="is-invalid" th:field="*{password}">
+       <div class="invalid-feedback" th:errors="*{password}">
+            </div>
+        <small>※半角英数</small>
+      </td>
+    </tr>
+
+  </table>
+  <input type="submit" value="ログイン">
+</form>
+</main>
+<a href="/">トップに戻る</a>
+</body>
+</html>

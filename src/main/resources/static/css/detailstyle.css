@@ -1,0 +1,39 @@
+@charset "UTF-8";
+ body{
+   background-color:#fbf9cc ;
+   color: #000000
+
+   }
+
+.imgL{
+	float: left;
+	margin-right: 20px;
+}
+
+.imgR{
+	float: right;
+	margin-right: 50px;
+}
+
+.entryTable {
+  width: 50%;
+  margin-bottom: 30px;
+  border: 2px solid #f6bb9e;
+  border-collapse: collapse;
+}
+
+
+.entryTable th,
+.entryTable td {
+  padding: 10px 20px;
+  border: 1px solid #f6bb9e;
+  background-color: #ffffff;
+}
+.entryTable th {
+  width: 10em;
+  background-color: #ffeeee;
+  text-align: left;
+}
+.entryTable caption {
+  margin-bottom: 10px;
+}

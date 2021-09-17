@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>学習項目詳細</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/detailstyle.css}">
+</head>
+<body>
+
+<img th:src="@{/photo/text1.jpg}"width="400" height="400" alt="textbook" class="imgR">
+
+<main id=contents>
+
+ <table class="entryTable" border="1">
+ <caption>詳細情報</caption>
+<tr>
+<th>学習教科</th>
+<td>[[${subject.subjectname}]]</td>
+</tr>
+
+<tr>
+<th>学習分野</th>
+<td>[[${studywork.bunya}]]</td>
+</tr>
+
+<tr>
+<th>教材</th>
+<td>[[${studywork.textbook}]]</td>
+</tr>
+
+<tr>
+<th>ページ</th>
+<td>[[${targetuniver.textpage}]]</td>
+</tr>
+
+<tr>
+<th>学習期間</th>
+<td>[[${targetuniver.startstudy}]] to[[${targetuniver.endstudy}]] </td>
+</tr>
+
+
+
+<tr>
+<th>試験1回目</th>
+<td>[[${subject.exam1}]]</td>
+</tr>
+
+<tr>
+<th>試験2回目</th>
+<td>[[${subject.exam2}]]</td>
+</tr>
+
+<tr>
+<th>完了ページ数</th>
+<td><p th:text="${progress.progresspercent}*${targetuniver.textpage}/100"></p></td>
+</tr>
+
+<tr>
+<th>進捗率</th>
+<td>[[${progress.progresspercent}]]</td>
+</tr>
+</table>
+
+<form  th:action="@{/progress}" th:object="${textpage}"method="post" novalidate >
+完了ページ数変更:<label for="textpage"></label><input type="text" class="progress-control" th:errorclass="is-invalid" th:field="*{textpage}">
+ <div class="invalid-feedback" th:errors="*{textpage}"></div>
+<input type="submit" value="押すなよ！"><br>
+<input type="hidden" name="allpage" th:value="${targetuniver.textpage}">
+<input type="hidden" name="studyworkid" th:value="${studywork.id}">
+<a href="/kariki">戻る</a>
+</form>
+</main>
+</body>
+</html>

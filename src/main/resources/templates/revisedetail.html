@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>会員情報修正</title>
+<link href="style.css" rel="stylesheet" media="all">
+<link href="https://fonts.googleapis.com/css?family=Limelight" rel="stylesheet">
+<link th:href="@{/css/confirmstyle2.css}" rel="stylesheet" />
+</head>
+<body>
+<header>
+  <h1>会員情報修正</h1>
+
+</header>
+
+<main id="contents">
+<form id="entryForm" th:action="@{/revisedone}" th:object="${user}"method="post" novalidate>
+<label for="lastname"></label>
+      <input type="text" class="register-control"
+      th:errorclass="is-invalid" th:field="*{lastname}">
+       <div class="invalid-feedback" th:errors="*{lastname}">
+            </div>
+<input type="submit" value="登録">
+</form>
+</main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ホーム</title>
+<link th:href="@{/css/indexstyle.css}" rel="stylesheet" />
+</head>
+<body>
+<h1>ドラゴン桜</h1>
+<main id="contents">
+ウエルカム
+[[${user.lastname}]]
+
+<h2>
+<p><a href="/revise">会員情報変更</a></p>
+<p><a href="/kariki">カリキュラム</a></p>
+<p><a href="/">ログアウト</a></p>
+</h2>
+</main>
+</body>
+</html>

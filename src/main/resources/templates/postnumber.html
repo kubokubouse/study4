@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>会員登録画面</title>
+<link th:href="@{/css/registerstyle.css}" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet" media="all">
+<link href="https://fonts.googleapis.com/css?family=Limelight" rel="stylesheet">
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+
+</head>
+
+<body>
+<header>
+  <h1>会員登録</h1>
+
+</header>
+
+<main id="contents">
+<form id="entryForm" th:action="@{/revisepostnumber}" th:object="${user}"method="post" novalidate>
+
+
+  <table class="entryTable" border="1">
+    <caption>会員情報</caption>
+     <tr>
+      <th>郵便番号（ハイフンあり） </th>
+      <td>
+       <label for="postnumber" ></label>
+      <input type="text" class="register-control"
+      th:errorclass="is-invalid" th:field="*{postnumber}" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
+      <div class="invalid-feedback" th:errors="*{postnumber}">
+            </div>
+      </td>
+    </tr>
+  </table>
+  <div>
+    <input type="reset" value="クリア">
+    <input type="submit" value="登録">
+  </div>
+ <input type="hidden" th:field="*{lastname}">
+<input type="hidden" th:field="*{firstname}">
+<input type="hidden" th:field="*{grade}">
+<input type="hidden" th:field="*{target}">
+<input type="hidden" th:field="*{hensachi}">
+<input type="hidden" th:field="*{address}">
+<input type="hidden" th:field="*{sex}">
+<input type="hidden" th:field="*{email}">
+<input type="hidden" th:field="*{password}">
+</form>
+
+</main>
+<a href="#" id="back-link">戻る</a>
+
+</body>
+<script>
+  const backLink = document.getElementById('back-link');
+  backLink.addEventListener('click', () => {
+    history.back(-1);
+  });
+</script>
+</html>
